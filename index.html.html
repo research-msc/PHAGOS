@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PHAGOS</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #2b0a10;
+      background: linear-gradient(180deg, #3a050c 0%, #6b0a16 40%, #3a050c 100%);
+      line-height: 1.5;
+    }
+    em, i { font-style: italic; }
+    .wrap { width: min(1200px, 96%); margin: 0 auto; padding: 18px 0 40px; }
+
+    .banner {
+      background: linear-gradient(180deg, #ffffff, #f4d9dd);
+      border-radius: 18px;
+      padding: 26px 20px 22px;
+      text-align: center;
+      border: 3px solid #8b0a1a;
+      margin-bottom: 18px;
+    }
+    .banner h1 {
+      margin: 0;
+      font-size: clamp(3rem, 10vw, 6rem);
+      letter-spacing: 8px;
+      line-height: 1;
+      color: #a50f26;
+      text-shadow: 3px 3px 0 #5b0711;
+    }
+    .banner h2 { margin: 12px auto 10px; font-size: clamp(1rem, 2.4vw, 1.5rem); max-width: 900px; color: #2b0a10; }
+    .banner h2 i { color: #c8102e; }
+    .pill {
+      display: inline-block;
+      background: linear-gradient(90deg, #8b0a1a, #c8102e);
+      color: #fff;
+      padding: 6px 18px;
+      border-radius: 999px;
+      font-size: .88rem;
+    }
+
+    .head {
+      display: inline-block;
+      background: linear-gradient(90deg, #7a0715, #c8102e);
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.25rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 7px 30px 7px 18px;
+      border: 2px solid #fff;
+      border-radius: 10px 999px 999px 10px;
+      margin: 0 0 12px;
+    }
+    .box {
+      background: #fff;
+      border: 2px solid #8b0a1a;
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+    .box p { margin: 0 0 10px; }
+    .box p:last-child { margin-bottom: 0; }
+    .box.abstract { font-size: .92rem; text-align: justify; margin-bottom: 20px; }
+
+    .layout { display: grid; grid-template-columns: 1fr 1.15fr; gap: 20px; align-items: start; }
+
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 10px; }
+    .stats.two { grid-template-columns: repeat(2, 1fr); }
+    .stat { border: 2px solid #c8102e; border-radius: 12px; padding: 10px; text-align: center; font-size: .82rem; background: #fff7f8; }
+    .stat b { display: block; font-size: 1.6rem; color: #a50f26; line-height: 1.1; }
+    .stat small { color: #777; display: block; margin-top: 4px; }
+
+    .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; font-size: .75rem; text-align: center; font-weight: bold; color: #7a0715; }
+    .flow div { background: #fbe6e9; border-radius: 10px; padding: 10px 4px; }
+
+    .obj { display: flex; gap: 12px; align-items: center; border: 2px solid #e5b3ba; border-radius: 12px; padding: 8px 12px; margin-bottom: 8px; font-size: .9rem; }
+    .obj span {
+      flex: 0 0 38px; height: 38px; border-radius: 50%; background: #a50f26; color: #fff;
+      display: grid; place-items: center; font-weight: bold; font-size: 1.2rem;
+    }
+
+    .sdg { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+    .sdg div { border-radius: 12px; padding: 12px; color: #fff; font-size: .85rem; }
+    .sdg b { display: block; font-size: 1.2rem; }
+    .g { background: #138a3d; }
+    .o { background: #e8741c; }
+    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; font-size: .78rem; }
+    .pillars div { border: 2px solid #e5b3ba; border-radius: 10px; overflow: hidden; }
+    .pillars h4 { margin: 0; background: #a50f26; color: #fff; text-align: center; padding: 5px; font-size: .75rem; text-transform: uppercase; }
+    .pillars p { padding: 8px; }
+
+    .steps { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .step { border: 2px solid #e5b3ba; border-radius: 12px; padding: 10px; font-size: .84rem; }
+    .step h4 { margin: 0 0 4px; color: #a50f26; text-transform: uppercase; font-size: .85rem; }
+    .step span { display: inline-grid; place-items: center; width: 24px; height: 24px; background: #a50f26; color: #fff; border-radius: 50%; margin-right: 6px; font-size: .8rem; }
+
+    .sub { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; }
+    .sub b {
+      width: 42px; height: 42px; border-radius: 50%; background: #a50f26; color: #fff;
+      display: grid; place-items: center; font-size: 1.6rem;
+    }
+    .sub h3 {
+      flex: 1; margin: 0; background: linear-gradient(90deg, #7a0715, #c8102e); color: #fff;
+      padding: 8px 16px; border-radius: 0 999px 999px 0; font-size: 1rem; text-transform: uppercase;
+    }
+    .two-col { display: grid; grid-template-columns: 1.5fr 1fr; gap: 12px; }
+    .cap { font-size: .72rem; color: #777; font-style: italic; margin-top: 6px; }
+    .ttl { text-align: center; font-weight: bold; color: #a50f26; font-size: .85rem; margin-bottom: 8px; }
+    .hi { border: 2px solid #c8102e; border-radius: 12px; padding: 12px; text-align: center; font-size: .85rem; background: #fff7f8; }
+    .hi big { display: block; font-size: 2.4rem; font-weight: bold; color: #a50f26; line-height: 1.1; }
+    .hi h4 { margin: 0 0 4px; color: #a50f26; }
+
+    .bar { display: grid; grid-template-columns: 110px 1fr 46px; gap: 8px; align-items: center; font-size: .74rem; margin-bottom: 7px; }
+    .bar i { display: block; height: 16px; background: #e8808c; border-radius: 0 6px 6px 0; }
+    .bar i.d { background: #7a0715; }
+    .bar i.l { background: #d7b5ba; }
+    .bar .t { background: #f3e3e5; border-radius: 0 6px 6px 0; }
+    .bar b { color: #2b0a10; }
+
+    .axis { position: relative; height: 54px; border-bottom: 2px solid #999; margin-top: 6px; }
+    .axis .z { position: absolute; left: 50%; top: 0; bottom: 0; border-left: 2px dashed #777; }
+    .axis .m { position: absolute; left: 41.87%; top: 26px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: #a50f26; }
+    .axis .m::before {
+      content: "\0394AUPRC = -0.0244"; position: absolute; bottom: 20px; left: -40px; white-space: nowrap;
+      font-size: .74rem; font-weight: bold; color: #a50f26;
+    }
+    .ticks { display: flex; justify-content: space-between; font-size: .68rem; color: #666; margin-top: 4px; }
+
+    .cols { display: flex; align-items: flex-end; justify-content: space-around; height: 170px; border-bottom: 2px solid #999; padding-top: 18px; }
+    .grp { display: flex; align-items: flex-end; gap: 4px; height: 100%; }
+    .grp div { width: 28px; position: relative; background: #7a0715; border-radius: 4px 4px 0 0; }
+    .grp div.h { background: repeating-linear-gradient(45deg, #d45a6c, #d45a6c 3px, #7a0715 3px, #7a0715 6px); }
+    .grp div u { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); font-size: .65rem; text-decoration: none; color: #333; }
+    .labels { display: flex; justify-content: space-around; font-size: .7rem; margin-top: 4px; text-align: center; }
+    .legend { font-size: .7rem; text-align: center; margin-bottom: 4px; color: #555; }
+    .topk { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 8px 0; }
+    .topk div { border: 2px solid #c8102e; border-radius: 8px; padding: 4px; font-size: .7rem; }
+    .topk b { display: block; font-size: 1.1rem; color: #a50f26; }
+
+    .funnel { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .funnel div {
+      background: linear-gradient(90deg, #7a0715, #c8102e); color: #fff; border-radius: 6px;
+      padding: 5px 8px; font-size: .74rem; text-align: center; min-width: 190px;
+    }
+    .funnel div b { margin-right: 6px; }
+    .funnel div.f { background: #3a050c; outline: 2px solid #ff4d68; }
+    .integrity { font-size: .78rem; text-align: left; padding-left: 18px; margin: 6px 0; }
+    .tag { display: inline-block; background: #fbe6e9; border: 1px solid #c8102e; border-radius: 999px; padding: 3px 10px; font-size: .72rem; font-weight: bold; color: #7a0715; }
+
+    .cands { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .cand { border: 2px solid #c8102e; border-radius: 12px; padding: 10px; font-size: .78rem; }
+    .cand h4 { margin: 0 0 6px; color: #a50f26; font-size: 1rem; display: flex; justify-content: space-between; }
+    .cand h4 span { background: #a50f26; color: #fff; border-radius: 999px; padding: 1px 10px; font-size: .75rem; }
+    .cand .img { background: #f4f4f4; border: 2px dashed #bbb; border-radius: 8px; height: 110px; display: grid; place-items: center; color: #888; font-size: .72rem; text-align: center; margin-bottom: 6px; }
+    .cand ul { margin: 0; padding-left: 16px; }
+    .note { background: #fbe6e9; border-left: 4px solid #c8102e; padding: 8px 12px; border-radius: 8px; font-size: .82rem; margin-top: 10px; }
+
+    .check { display: flex; gap: 10px; align-items: flex-start; border: 2px solid #e5b3ba; border-radius: 12px; padding: 8px 12px; margin-bottom: 8px; font-size: .86rem; }
+    .check span { flex: 0 0 26px; height: 26px; background: #a50f26; color: #fff; border-radius: 50%; display: grid; place-items: center; font-weight: bold; }
+    .bottom { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; }
+    .reco { font-size: .85rem; padding-left: 18px; margin: 0; }
+    .reco li { margin-bottom: 6px; }
+    .refs { font-size: .78rem; }
+    .qr { width: 90px; height: 90px; border: 2px dashed #999; display: grid; place-items: center; font-size: .65rem; color: #888; margin-top: 8px; }
+    footer { text-align: center; color: #f0c8ce; font-size: .8rem; margin-top: 10px; }
+
+    @media (max-width: 900px) {
+      .layout, .bottom, .two-col, .cands, .steps, .sdg { grid-template-columns: 1fr; }
+      .stats, .pillars { grid-template-columns: 1fr 1fr; }
+      .flow { grid-template-columns: 1fr; }
+      .bar { grid-template-columns: 1fr 46px; }
+      .bar span { grid-column: 1 / -1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="banner">
+      <h1>PHAGOS</h1>
+      <h2>In Silico Discovery of Novel Candidate <i>Acinetobacter baumannii</i> Associated Bacteriophage Receptor-Binding Proteins</h2>
+      <span class="pill">via Similarity-Aware Machine Learning, Independent External Validation, and Host-Unassigned Sequence Screening</span>
+    </header>
+
+    <div class="head">Abstract</div>
+    <div class="box abstract">
+      Carbapenem-resistant <i>Acinetobacter baumannii</i> is a critical antimicrobial-resistance threat, yet identifying bacteriophages with suitable host specificity remains labor-intensive. Receptor-binding proteins (RBPs), which mediate initial phage recognition of bacterial surfaces, may contain sequence signals useful for computational host-association screening. This study developed PHAGOS, a computer-based framework for prioritizing host-unassigned bacteriophage RBPs for possible <i>A. baumannii</i> association. PHAGOS used 886 unique known-host RBPs, including 64 <i>A. baumannii</i>-associated proteins, represented by nucleotide/codon, amino-acid, and physicochemical features under similarity-aware machine-learning evaluation. Random Forest and Logistic Regression models were compared with prevalence and BLASTp baselines and tested on an independent 1,378-protein external cohort. The nucleotide/codon Random Forest achieved the highest internal area under the precision-recall curve (AUPRC) of 0.7889. Feature integration did not show a statistically clear improvement, so the integration hypothesis was not supported. Externally, the integrated Random Forest achieved an AUPRC of 0.4771 versus 0.1421 for BLASTp. PHAGOS then screened a separate PhaRBP harvest beginning with 127,751 raw records and identified 20 metadata-vetted, sequence-dissimilar computational RBP candidates. PHAGOS therefore narrows large host-unassigned RBP collections into experimentally testable hypotheses rather than confirmed <i>A. baumannii</i>-infecting phages.
+    </div>
+
+    <div class="layout">
+
+      <div>
+        <div class="head">Background of the Study</div>
+        <div class="box">
+          <div class="stats">
+            <div class="stat"><b>4.7 million</b>bacterial AMR-associated deaths worldwide in 2021.<small>WHO, 2024</small></div>
+            <div class="stat"><b>CRITICAL PRIORITY</b>Carbapenem-resistant <i>A. baumannii</i> is a WHO critical-priority pathogen.<small>WHO, 2026</small></div>
+            <div class="stat"><b>6,683</b><i>A. baumannii</i> infections recorded in the Philippines in 2024.<small>ARSRL, 2024</small></div>
+          </div>
+          <div class="stats two">
+            <div class="stat"><b>49.64% / 49.26%</b>imipenem/meropenem resistance among all reported isolates.<small>ARSRL, 2024</small></div>
+            <div class="stat"><b>58.32% / 58.30%</b>imipenem/meropenem resistance among presumptive healthcare-associated infections.<small>ARSRL, 2024</small></div>
+          </div>
+          <div class="flow">
+            <div>Drug-resistant <i>A. baumannii</i></div>
+            <div>Need for alternatives</div>
+            <div>Bacteriophages</div>
+            <div>RBPs recognize bacterial receptors</div>
+            <div>PHAGOS screens possible host associations</div>
+          </div>
+        </div>
+
+        <div class="head">Objectives</div>
+        <div class="box">
+          <div class="obj"><span>1</span><div><b>Determine</b> whether sequence-derived RBP characteristics can distinguish <i>A. baumannii</i>-associated RBPs from comparison-host RBPs.</div></div>
+          <div class="obj"><span>2</span><div><b>Develop and compare</b> Logistic Regression and Random Forest using similarity-aware validation and BLASTp/prevalence baselines.</div></div>
+          <div class="obj"><span>3</span><div><b>Test</b> finalized models on an independent known-host external dataset without retraining.</div></div>
+          <div class="obj"><span>4</span><div><b>Screen</b> host-unassigned RBPs and prioritize the strongest biologically plausible candidates for future testing.</div></div>
+        </div>
+
+        <div class="head">Significance</div>
+        <div class="box">
+          <div class="sdg">
+            <div class="g"><b>SDG 3</b>Good Health and Well-Being. Supports early-stage research on alternatives against antimicrobial-resistant <i>A. baumannii</i>.</div>
+            <div class="o"><b>SDG 9</b>Industry, Innovation and Infrastructure. Demonstrates a reproducible bioinformatics and machine-learning discovery workflow.</div>
+          </div>
+          <div class="pillars">
+            <div><h4>Public Health</h4><p>Focuses research on an antimicrobial-resistance priority pathogen.</p></div>
+            <div><h4>Research Efficiency</h4><p>Narrows very large sequence databases into a smaller experimental shortlist.</p></div>
+            <div><h4>Computational Rigor</h4><p>Uses similarity-aware validation, independent external testing, BLASTp comparison, and frozen discovery rules.</p></div>
+          </div>
+        </div>
+
+        <div class="head">Methodology</div>
+        <div class="box">
+          <div class="steps">
+            <div class="step"><h4><span>1</span>Dataset Curation</h4>886 known-host RBPs; 64 <i>A. baumannii</i> positives.</div>
+            <div class="step"><h4><span>2</span>Feature Extraction</h4>149 nucleotide/codon + 27 amino-acid + 9 physicochemical = 185 integrated features.</div>
+            <div class="step"><h4><span>3</span>Similarity Control</h4>Primary 80% identity grouping; nested grouped cross-validation, 4 outer x 3 inner folds.</div>
+            <div class="step"><h4><span>4</span>Model Development</h4>Logistic Regression, Random Forest, prevalence baseline, leakage-controlled BLASTp.</div>
+            <div class="step"><h4><span>5</span>Independent Validation</h4>Frozen models tested on 1,378 known-host proteins without retraining.</div>
+            <div class="step"><h4><span>6</span>Discovery Screening</h4>PhaRBP harvest metadata audit, CDS quality, labeled-reference similarity screen, CD-HIT80 redundancy control, frozen ranking, biological characterization.</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="head">Results and Discussion</div>
+        <div class="box">
+
+          <div class="sub"><b>A</b><h3>Internal Model Performance</h3></div>
+          <div class="two-col">
+            <div>
+              <div class="ttl">Area Under the Precision-Recall Curve (AUPRC)</div>
+              <div class="bar"><span>RF - Nucleotide/codon</span><div class="t"><i class="d" style="width:78.89%"></i></div><b>0.7889</b></div>
+              <div class="bar"><span>RF - Integrated</span><div class="t"><i style="width:76.44%"></i></div><b>0.7644</b></div>
+              <div class="bar"><span>LR - Nucleotide/codon</span><div class="t"><i style="width:73.82%"></i></div><b>0.7382</b></div>
+              <div class="bar"><span>BLASTp</span><div class="t"><i style="width:73.6%"></i></div><b>0.7360</b></div>
+              <div class="bar"><span>Prevalence baseline</span><div class="t"><i class="l" style="width:7.22%"></i></div><b>0.0722</b></div>
+              <div class="cap">Fig. 1: Internal performance of classification models.</div>
+            </div>
+            <div class="hi"><h4>Best Internal AUPRC</h4><big>0.7889</big>RBP sequence characteristics contained useful predictive information.</div>
+          </div>
+
+          <hr />
+          <div class="sub"><b>B</b><h3>Feature Integration Hypothesis</h3></div>
+          <div class="two-col">
+            <div>
+              <div class="ttl">Primary Feature-Integration Effect</div>
+              <div class="axis"><div class="z"></div><div class="m"></div></div>
+              <div class="ticks"><span>-0.15</span><span>-0.10</span><span>-0.05</span><span>0.00</span><span>0.05</span><span>0.10</span><span>0.15</span></div>
+              <div class="cap">Fig. 2: AUPRC = Integrated RF minus Nucleotide/codon RF.</div>
+            </div>
+            <div class="hi"><h4>Feature Ablation</h4>Removing nucleotide/codon features reduced AUPRC from <b>0.7644</b> to <b>0.4073</b>, showing the strongest feature-group contribution.</div>
+          </div>
+
+          <hr />
+          <div class="sub"><b>C</b><h3>Independent External Validation</h3></div>
+          <div class="two-col">
+            <div>
+              <div class="ttl">External AUPRC</div>
+              <div class="legend">Dark: complete external cohort | Striped: strict sequence-dissimilar subset</div>
+              <div class="cols">
+                <div class="grp"><div style="height:95.4%"><u>0.477</u></div><div class="h" style="height:54.4%"><u>0.272</u></div></div>
+                <div class="grp"><div style="height:88.4%"><u>0.442</u></div><div class="h" style="height:48%"><u>0.240</u></div></div>
+                <div class="grp"><div style="height:28.4%"><u>0.142</u></div><div class="h" style="height:16.6%"><u>0.083</u></div></div>
+              </div>
+              <div class="labels"><span>Integrated RF</span><span>Nucleotide/Codon RF</span><span>BLASTp</span></div>
+              <div class="cap">Fig. 3: Independent external validation.</div>
+            </div>
+            <div class="hi">
+              <big style="font-size:1.6rem">0.4771 vs 0.1421</big>
+              <b>Top-k Recovery (Integrated RF)</b>
+              <div class="topk"><div>Top 5<b>5/5</b></div><div>Top 10<b>9/10</b></div><div>Top 20<b>13/20</b></div></div>
+              Machine learning retained useful ranking performance and showed a statistically clear advantage over BLASTp.
+            </div>
+          </div>
+
+          <hr />
+          <div class="sub"><b>D</b><h3>Discovery Funnel and Final Candidates</h3></div>
+          <div class="two-col">
+            <div>
+              <div class="funnel">
+                <div style="width:100%"><b>127,751</b>Raw PhaRBP rows</div>
+                <div style="width:92%"><b>55,496</b>Unique proteins</div>
+                <div style="width:84%"><b>21,528</b>PhaRBP host-unassigned prote
