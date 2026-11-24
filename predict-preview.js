@@ -1,9 +1,4 @@
 
-/* ========================================
-   PHAGOS PREDICT INTERFACE
-   Frontend preview only.
-   ======================================== */
-
 (() => {
 
     "use strict";
@@ -11,8 +6,8 @@
     const form = document.getElementById("preview-form");
     const status = document.getElementById("status");
 
-    const menu = document.querySelector(".predict-menu");
-    const links = document.getElementById("predict-links");
+    const menu = document.querySelector(".nav-toggle");
+const links = document.getElementById("nav-links");
 
     const fields = [
         {
