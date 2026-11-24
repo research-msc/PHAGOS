@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +19,7 @@
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
       </button>
+
       <ul class="nav-links" id="nav-links">
         <li><a href="#top">Home</a></li>
         <li><a href="#overview">Overview</a></li>
@@ -26,7 +28,9 @@
         <li><a href="#results">Results</a></li>
         <li><a href="#candidates">Candidates</a></li>
         <li><a href="#conclusion">Conclusion</a></li>
-<li><a href="predict-preview.html">Predict</a></li>      </ul>
+        <li><a href="predict-preview.html">Predict</a></li>
+      </ul>
+
     </nav>
   </header>
 
@@ -43,7 +47,9 @@
             <input id="site-search" type="search" placeholder="Search PHAGOS: try DISC05843, AUPRC, methodology..." aria-label="Search PHAGOS" />
             <button type="submit">Search</button>
           </form>
+
           <p class="search-msg" id="search-msg" role="status"></p>
+
           <div class="chips" aria-label="Quick searches">
             <button type="button" class="chip" data-q="DISC05843">DISC05843</button>
             <button type="button" class="chip" data-q="DISC06024">DISC06024</button>
@@ -52,6 +58,7 @@
             <button type="button" class="chip" data-q="methodology">Methodology</button>
           </div>
         </div>
+
         <div class="hero-visual" aria-hidden="true">
           <svg viewBox="0 0 240 300" class="phage-svg" role="img">
             <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
@@ -71,6 +78,7 @@
             </g>
             <circle cx="120" cy="222" r="5" fill="#fff" class="pulse" />
           </svg>
+
           <p class="visual-tag">Phage with <strong>receptor-binding proteins (RBPs)</strong> at the tail tip</p>
         </div>
       </div>
@@ -89,6 +97,7 @@
           <h2>Explore PHAGOS</h2>
           <p>Jump to any part of the study.</p>
         </div>
+
         <div class="modules">
           <a class="module reveal" href="#abstract"><span class="m-ico">A</span><h3>Abstract</h3><p>The study in one read.</p></a>
           <a class="module reveal" href="#background"><span class="m-ico">B</span><h3>Background</h3><p>Why <em>A. baumannii</em> matters and what we aim to do.</p></a>
@@ -103,10 +112,14 @@
     <section id="abstract" class="section tint">
       <div class="container">
         <div class="section-head reveal"><h2>Abstract</h2></div>
+
         <div class="card abstract-card reveal">
           <p>Carbapenem-resistant <em>Acinetobacter baumannii</em> is a critical antimicrobial-resistance threat, yet identifying bacteriophages with suitable host specificity remains labor-intensive. Receptor-binding proteins (RBPs), which mediate initial phage recognition of bacterial surfaces, may contain sequence signals useful for computational host-association screening.</p>
+
           <p>This study developed <strong>PHAGOS</strong>, a computer-based framework for prioritizing host-unassigned bacteriophage RBPs for possible <em>A. baumannii</em> association. PHAGOS used 886 unique known-host RBPs, including 64 <em>A. baumannii</em>-associated proteins, represented by nucleotide/codon, amino-acid, and physicochemical features under similarity-aware machine-learning evaluation. Random Forest and Logistic Regression models were compared with prevalence and BLASTp baselines and tested on an independent 1,378-protein external cohort.</p>
+
           <p>The nucleotide/codon Random Forest achieved the highest internal area under the precision-recall curve (AUPRC) of 0.7889. Feature integration did not show a statistically clear improvement, so the integration hypothesis was not supported. Externally, the integrated Random Forest achieved an AUPRC of 0.4771 versus 0.1421 for BLASTp. PHAGOS then screened a separate PhaRBP harvest beginning with 127,751 raw records and identified 20 metadata-vetted, sequence-dissimilar computational RBP candidates.</p>
+
           <p class="callout">PHAGOS narrows large host-unassigned RBP collections into experimentally testable hypotheses rather than confirmed <em>A. baumannii</em>-infecting phages.</p>
         </div>
       </div>
@@ -115,27 +128,32 @@
     <section id="background" class="section">
       <div class="container">
         <div class="section-head reveal"><h2>Background of the Study</h2></div>
+
         <div class="card-grid">
           <article class="card stat-card reveal">
             <div class="big"><span data-count="4.7" data-decimals="1">0</span> <small>million</small></div>
             <p>bacterial AMR-associated deaths worldwide in 2021.</p>
             <cite>WHO, 2024</cite>
           </article>
+
           <article class="card stat-card reveal">
             <div class="big">Critical<br />Priority</div>
             <p>Carbapenem-resistant <em>A. baumannii</em> is a WHO critical-priority pathogen.</p>
             <cite>WHO, 2026</cite>
           </article>
+
           <article class="card stat-card reveal">
             <div class="big" data-count="6683">0</div>
             <p><em>A. baumannii</em> infections recorded in the Philippines in 2024.</p>
             <cite>ARSRL, 2024</cite>
           </article>
+
           <article class="card stat-card wide reveal">
             <div class="big">49.64% / 49.26%</div>
             <p>imipenem / meropenem resistance among all reported isolates.</p>
             <cite>ARSRL, 2024</cite>
           </article>
+
           <article class="card stat-card wide reveal">
             <div class="big">58.32% / 58.30%</div>
             <p>imipenem / meropenem resistance among presumptive healthcare-associated infections.</p>
@@ -152,6 +170,7 @@
         </ol>
 
         <h3 class="sub-title reveal">Objectives</h3>
+
         <div class="obj-list">
           <div class="obj reveal"><span class="obj-num">1</span><p><strong>Determine</strong> whether sequence-derived RBP characteristics can distinguish <em>A. baumannii</em>-associated RBPs from comparison-host RBPs.</p></div>
           <div class="obj reveal"><span class="obj-num">2</span><p><strong>Develop and compare</strong> Logistic Regression and Random Forest using similarity-aware validation and BLASTp / prevalence baselines.</p></div>
@@ -160,16 +179,19 @@
         </div>
 
         <h3 class="sub-title reveal">Significance</h3>
+
         <div class="sdg-grid">
           <article class="sdg sdg3 reveal">
             <h4>SDG 3 <span>Good Health and Well-Being</span></h4>
             <p>Supports early-stage research on alternatives against antimicrobial-resistant <em>A. baumannii</em>.</p>
           </article>
+
           <article class="sdg sdg9 reveal">
             <h4>SDG 9 <span>Industry, Innovation and Infrastructure</span></h4>
             <p>Demonstrates a reproducible bioinformatics and machine-learning discovery workflow.</p>
           </article>
         </div>
+
         <div class="pillars">
           <div class="pillar reveal"><h5>Public Health</h5><p>Focuses research on an antimicrobial-resistance priority pathogen.</p></div>
           <div class="pillar reveal"><h5>Research Efficiency</h5><p>Narrows very large sequence databases into a smaller experimental shortlist.</p></div>
@@ -181,6 +203,7 @@
     <section id="methodology" class="section tint">
       <div class="container">
         <div class="section-head reveal"><h2>Methodology</h2><p>From curated reference proteins to a frozen, ranked shortlist.</p></div>
+
         <ol class="steps">
           <li class="step reveal"><span class="step-num">1</span><div><h3>Dataset Curation</h3><p><strong>886</strong> known-host RBPs; <strong>64</strong> <em>A. baumannii</em> positives.</p></div></li>
           <li class="step reveal"><span class="step-num">2</span><div><h3>Feature Extraction</h3><p>149 nucleotide/codon + 27 amino-acid + 9 physicochemical = <strong>185</strong> integrated features.</p></div></li>
@@ -207,6 +230,7 @@
           <div class="panel-grid">
             <figure class="chart-card">
               <figcaption>Area Under the Precision-Recall Curve (AUPRC)</figcaption>
+
               <div class="hbars">
                 <div class="hbar"><span class="hl">RF &ndash; Nucleotide/codon</span><div class="track"><div class="fill top" data-width="78.89"></div></div><span class="hv">0.7889</span></div>
                 <div class="hbar"><span class="hl">RF &ndash; Integrated</span><div class="track"><div class="fill" data-width="76.44"></div></div><span class="hv">0.7644</span></div>
@@ -214,8 +238,10 @@
                 <div class="hbar"><span class="hl">BLASTp</span><div class="track"><div class="fill" data-width="73.60"></div></div><span class="hv">0.7360</span></div>
                 <div class="hbar"><span class="hl">Prevalence baseline</span><div class="track"><div class="fill muted" data-width="7.22"></div></div><span class="hv">0.0722</span></div>
               </div>
+
               <p class="fig-cap">Fig. 1: Internal performance of classification models.</p>
             </figure>
+
             <aside class="highlight">
               <p class="hl-label">Best Internal AUPRC</p>
               <p class="hl-big" data-count="0.7889" data-decimals="4">0</p>
@@ -228,6 +254,7 @@
           <div class="panel-grid">
             <figure class="chart-card">
               <figcaption>Primary Feature-Integration Effect</figcaption>
+
               <div class="axis-wrap">
                 <div class="axis-ends"><span>Nucleotide/codon favored</span><span>Integrated favored</span></div>
                 <div class="axis">
@@ -237,12 +264,15 @@
                 <div class="ticks"><span>&minus;0.15</span><span>&minus;0.10</span><span>&minus;0.05</span><span>0.00</span><span>0.05</span><span>0.10</span><span>0.15</span></div>
                 <p class="axis-title">&Delta;AUPRC = Integrated RF &minus; Nucleotide/codon RF</p>
               </div>
+
               <p class="note">Feature integration did not show a statistically clear improvement, so the integration hypothesis was not supported.</p>
               <p class="fig-cap">Fig. 2: Effect of feature integration on model performance.</p>
             </figure>
+
             <aside class="highlight">
               <p class="hl-label">Feature Ablation</p>
               <p>Removing nucleotide/codon features reduced AUPRC from <strong>0.7644</strong> to <strong>0.4073</strong>, showing the strongest feature-group contribution.</p>
+
               <div class="mini-bars">
                 <div><span>With</span><div class="track"><div class="fill" data-width="76.44"></div></div><b>0.7644</b></div>
                 <div><span>Without</span><div class="track"><div class="fill muted" data-width="40.73"></div></div><b>0.4073</b></div>
@@ -255,31 +285,39 @@
           <div class="panel-grid">
             <figure class="chart-card">
               <figcaption>External AUPRC</figcaption>
+
               <div class="legend"><span><i class="sw solid"></i>Complete external cohort</span><span><i class="sw hatch"></i>Strict sequence-dissimilar subset</span></div>
+
               <div class="vchart">
                 <div class="vgroup"><div class="vbars">
                   <div class="vbar solid" data-height="95.4"><b>0.477</b></div>
                   <div class="vbar hatch" data-height="54.4"><b>0.272</b></div>
                 </div><span>Integrated RF</span></div>
+
                 <div class="vgroup"><div class="vbars">
                   <div class="vbar solid" data-height="88.4"><b>0.442</b></div>
                   <div class="vbar hatch" data-height="48"><b>0.240</b></div>
                 </div><span>Nucleotide/Codon RF</span></div>
+
                 <div class="vgroup"><div class="vbars">
                   <div class="vbar solid" data-height="28.4"><b>0.142</b></div>
                   <div class="vbar hatch" data-height="16.6"><b>0.083</b></div>
                 </div><span>BLASTp</span></div>
               </div>
+
               <p class="fig-cap">Fig. 3: Independent external validation.</p>
             </figure>
+
             <aside class="highlight">
               <p class="hl-big small">0.4771 <em>vs</em> 0.1421</p>
               <p class="hl-label">Top-k Recovery (Integrated RF)</p>
+
               <div class="topk">
                 <div><span>Top 5</span><b>5/5</b></div>
                 <div><span>Top 10</span><b>9/10</b></div>
                 <div><span>Top 20</span><b>13/20</b></div>
               </div>
+
               <p>Machine learning retained useful ranking performance on independent known-host proteins and showed a statistically clear advantage over BLASTp.</p>
             </aside>
           </div>
@@ -289,6 +327,7 @@
           <div class="panel-grid">
             <figure class="chart-card">
               <figcaption>Discovery Funnel for Prioritized RBP Candidates</figcaption>
+
               <div class="funnel">
                 <div class="frow" style="--w:100%"><b>127,751</b><span>Raw PhaRBP rows</span></div>
                 <div class="frow" style="--w:90%"><b>55,496</b><span>Unique proteins</span></div>
@@ -300,17 +339,21 @@
                 <div class="frow" style="--w:44%"><b>2,157</b><span>CD-HIT80 redundancy groups</span></div>
                 <div class="frow final" style="--w:38%"><b>20</b><span>Final metadata-vetted candidates</span></div>
               </div>
+
               <p class="fig-cap">Fig. 4: Discovery funnel for prioritized RBP candidates.</p>
             </figure>
+
             <aside class="highlight">
               <p class="hl-label">Discovery Integrity</p>
               <p class="pipeline-tag">Score-blind &rarr; Frozen &rarr; Ranked</p>
+
               <ol class="integrity">
                 <li>Filters fixed before scores were viewed.</li>
                 <li>Metadata, CDS-quality, similarity, and redundancy rules applied independently.</li>
                 <li>One representative per CD-HIT80 group entered the main ranking.</li>
                 <li>Frozen models were not retrained after discovery screening.</li>
               </ol>
+
               <p>PHAGOS reduced a database-scale pool of <strong>127,751</strong> records to <strong>20</strong> carefully screened candidate RBPs.</p>
             </aside>
           </div>
@@ -318,16 +361,19 @@
       </div>
     </section>
 
-      <section id="candidates" class="section tint">
+    <section id="candidates" class="section tint">
       <div class="container">
         <div class="section-head reveal"><h2>Final Candidates and AlphaFold 3 Structures</h2></div>
+
         <div class="cand-grid">
           <article class="cand reveal" id="cand-DISC05843">
             <header><h3>DISC05843</h3><span class="rank">Rank 1</span></header>
+
             <div class="struct">
               <img src="assets/DISC05843.webp" alt="AlphaFold 3 predicted structure of DISC05843" onerror="this.parentElement.classList.add('empty')" />
               <p class="placeholder">Add your AlphaFold 3 image as <code>assets/DISC05843.webp</code></p>
             </div>
+
             <ul>
               <li>Integrated RF score: <strong>0.565633</strong></li>
               <li>Strongest overall evidence convergence</li>
@@ -335,34 +381,43 @@
               <li>Tail-collar domain evidence</li>
               <li>Nearby baseplate-related gene</li>
             </ul>
+
             <div class="conf"><span>pLDDT</span><div class="track"><div class="fill" data-width="84.56"></div></div><b>84.56</b></div>
             <div class="conf"><span>pTM</span><div class="track"><div class="fill muted" data-width="44"></div></div><b>0.44</b></div>
+
             <p class="fig-cap">Fig. 5: AlphaFold 3 predicted structure of DISC05843.</p>
           </article>
 
           <article class="cand reveal" id="cand-DISC06024">
             <header><h3>DISC06024</h3><span class="rank">Rank 8</span></header>
+
             <div class="struct">
               <img src="assets/DISC06024.webp" alt="AlphaFold 3 predicted structure of DISC06024" onerror="this.parentElement.classList.add('empty')" />
               <p class="placeholder">Add your AlphaFold 3 image as <code>assets/DISC06024.webp</code></p>
             </div>
+
             <ul>
               <li>Clearest attachment-protein architecture</li>
               <li>Tip attachment protein J annotation</li>
               <li>Ig-like domain</li>
               <li>Nearby tail tape-measure gene</li>
             </ul>
+
             <div class="conf"><span>pLDDT</span><div class="track"><div class="fill" data-width="78.99"></div></div><b>78.99</b></div>
             <div class="conf"><span>pTM</span><div class="track"><div class="fill muted" data-width="47"></div></div><b>0.47</b></div>
+
             <p class="fig-cap">Fig. 6: AlphaFold 3 predicted structure of DISC06024.</p>
           </article>
         </div>
+
         <p class="callout reveal">These AlphaFold 3 predictions strengthen PHAGOS&rsquo;s prioritization: <strong>DISC05843</strong> has higher local structural confidence, while <strong>DISC06024</strong> shows clearer attachment-protein features, supporting both as plausible <em>A. baumannii</em>-associated RBP candidates.</p>
       </div>
-      </section>
+    </section>
+
     <section id="conclusion" class="section">
       <div class="container">
         <div class="section-head reveal"><h2>Conclusion</h2></div>
+
         <ul class="checks">
           <li class="reveal">PHAGOS successfully developed a similarity-aware, independently validated framework for prioritizing possible <em>A. baumannii</em>-associated RBPs.</li>
           <li class="reveal">Nucleotide/codon features provided the strongest individual predictive signal. Integrated RF generalized best externally and clearly exceeded BLASTp on the independent cohort.</li>
@@ -370,6 +425,7 @@
         </ul>
 
         <h3 class="sub-title reveal">Recommendations</h3>
+
         <div class="reco-grid">
           <div class="reco reveal"><span>1</span><p>Experimentally validate DISC05843 and DISC06024 using host-range, adsorption, and infectivity assays across multiple <em>A. baumannii</em> strains.</p></div>
           <div class="reco reveal"><span>2</span><p>Expand the number and diversity of experimentally characterized <em>A. baumannii</em>-associated RBPs.</p></div>
@@ -378,6 +434,7 @@
         </div>
 
         <h3 class="sub-title reveal">References</h3>
+
         <div class="card refs reveal">
           <ul>
             <li>World Health Organization (2024). Bacterial AMR-associated deaths, 2021.</li>
