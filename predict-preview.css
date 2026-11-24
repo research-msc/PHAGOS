@@ -1,0 +1,39 @@
+
+.preview-container {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 24px;
+}
+
+.preview-panel {
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 20px 0;
+}
+
+.preview-container button {
+    background: #7f2638;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.preview-container button:hover {
+    background: #60202d;
+}
+
+.disclaimer {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+    .preview-container {
+        margin: 20px auto;
+        padding: 16px;
+    }
+}
