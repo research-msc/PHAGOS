@@ -1,223 +1,210 @@
 
-/* ========================================
-   PHAGOS PREDICT PAGE
-   ======================================== */
 
 .predict-page {
-    --p-maroon: #810019;
-    --p-dark: #620013;
-    --p-ink: #29161b;
-    --p-soft: #f8f0f2;
-    --p-line: #e6d7da;
-    --p-muted: #6d5a5f;
-
     margin: 0;
-    background: #ffffff;
-    color: var(--p-ink);
-    font: 16px/1.45 Georgia, "Times New Roman", serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
 }
 
-.predict-page *,
-.predict-page *::before,
-.predict-page *::after {
+.predict-page * {
     box-sizing: border-box;
 }
 
 .predict-container {
-    width: min(1100px, 92%);
+    width: min(1160px, 92%);
     margin-inline: auto;
 }
 
-/* ========================================
-   NAVIGATION BAR
-   ======================================== */
+/* =========================================
+   HERO BANNER
+   ========================================= */
 
-.predict-header {
-    background: white;
-    border-bottom: 1px solid var(--p-line);
-}
-
-.predict-nav {
-    min-height: 72px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    position: relative;
-}
-
-.predict-brand {
-    color: var(--p-maroon);
-    font: bold 32px/1 Georgia, serif;
-    text-decoration: none;
-    letter-spacing: -0.7px;
-}
-
-.predict-links {
-    list-style: none;
-    display: flex;
-    gap: clamp(9px, 1.4vw, 24px);
-    align-items: center;
-    margin: 0;
-    padding: 0;
-}
-
-.predict-links a {
-    display: block;
-    color: var(--p-ink);
-    font-weight: bold;
-    font-size: 14px;
-    padding: 13px 0 9px;
-    text-decoration: none;
-    border-bottom: 2px solid transparent;
-}
-
-.predict-links a:hover,
-.predict-links a.current {
-    color: var(--p-maroon);
-    border-bottom-color: var(--p-maroon);
-}
-
-/* MOBILE MENU */
-
-.predict-menu {
-    display: none;
-    background: transparent;
-    border: 1px solid var(--p-line);
-    border-radius: 5px;
-    padding: 8px;
-    cursor: pointer;
-}
-
-.predict-menu span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--p-maroon);
-    margin: 4px 0;
-}
-
-/* ========================================
-   MAROON TITLE BANNER
-   ======================================== */
-
-.predict-banner {
-    background: var(--p-maroon);
-    color: white;
-    padding: 24px 0 21px;
-}
-
-.predict-banner h1 {
-    font-size: clamp(28px, 3.6vw, 42px);
-    margin: 0 0 3px;
-    line-height: 1.15;
-    font-weight: 700;
-}
-
-.predict-banner p {
-    font-size: 18px;
-    margin: 0 0 7px;
+.predict-page .predict-banner {
+    padding: 48px 0 42px;
     color: #ffffff;
+
+    background:
+        radial-gradient(
+            700px 360px at 90% 0%,
+            rgba(255,255,255,.14),
+            transparent 60%
+        ),
+        radial-gradient(
+            600px 400px at 0% 100%,
+            rgba(0,0,0,.25),
+            transparent 60%
+        ),
+        linear-gradient(
+            135deg,
+            var(--brand-dark),
+            var(--brand) 55%,
+            var(--accent)
+        );
 }
 
-.predict-mode {
-    font: 12px/1.4 system-ui, sans-serif;
-    color: #f5dce2;
+.predict-banner .eyebrow {
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
 }
 
-/* ========================================
-   PREDICTION WORKSPACE
-   ======================================== */
+.predict-page .predict-banner h1 {
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(2rem, 4.5vw, 3.7rem);
+    font-weight: 700;
+    letter-spacing: .04em;
+    line-height: 1.2;
+    margin: 0 0 14px;
+}
+
+.predict-banner h1 span {
+    color: #ffd0d7;
+}
+
+.predict-description {
+    font-size: 1.05rem;
+    margin: 0 0 16px;
+}
+
+.predict-banner .lead {
+    font-size: .85rem;
+    margin: 0;
+}
+
+/* =========================================
+   MAIN WORKSPACE
+   ========================================= */
 
 .predict-workspace {
-    padding-block: 17px 36px;
-    max-width: 1100px;
+    padding-block: 32px 64px;
 }
+
+#preview-form {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: clamp(18px, 3vw, 34px);
+}
+
+/* =========================================
+   INPUT ROWS
+   ========================================= */
 
 .predict-row {
     display: grid;
-    grid-template-columns: minmax(140px, 22%) minmax(0, 1fr);
-    gap: 20px;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 22px;
     align-items: start;
 
-    padding: 13px 18px;
-    margin-bottom: 9px;
+    padding: 20px;
+    margin-bottom: 16px;
 
-    border: 1px solid #f2e9eb;
-    background: #faf6f6;
-    border-radius: 8px;
+    background: var(--tint);
+    border: 1px solid var(--line);
+    border-radius: 12px;
 }
 
 .predict-row > label {
-    padding-top: 7px;
-    font-size: 17px;
-    font-weight: bold;
-    line-height: 1.3;
+    font-family: "Inter", sans-serif;
+    font-size: .95rem;
+    font-weight: 600;
+    line-height: 1.5;
+    padding-top: 10px;
 }
 
-/* MODEL DROPDOWN AND SEQUENCE BOXES */
+.predict-input {
+    min-width: 0;
+}
+
+/* =========================================
+   DROPDOWN AND TEXT INPUTS
+   ========================================= */
 
 .predict-row select,
 .predict-row textarea {
+    display: block;
     width: 100%;
     min-width: 0;
-    padding: 10px 12px;
 
-    color: var(--p-ink);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+
+    padding: 12px 16px;
     background: #ffffff;
+    color: var(--ink);
 
-    border: 1px solid #b7a9ad;
-    border-radius: 5px;
+    font-family: "Inter", sans-serif;
+    font-size: .95rem;
+    line-height: 1.6;
 
-    font: inherit;
+    transition:
+        border-color .2s,
+        box-shadow .2s;
 }
 
 .predict-row select {
-    min-height: 43px;
+    min-height: 48px;
+    cursor: pointer;
 }
 
 .predict-row textarea {
-    display: block;
-    min-height: 80px;
+    min-height: 115px;
     resize: vertical;
-    font: 14px/1.5 Georgia, serif;
 }
 
 .predict-row textarea::placeholder {
-    color: #777777;
-    opacity: 1;
+    color: var(--muted);
+    opacity: .8;
 }
 
-/* ========================================
-   FILE SELECTION CONTROLS
-   ======================================== */
+.predict-row select:focus,
+.predict-row textarea:focus {
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(200,16,46,.10);
+}
+
+/* =========================================
+   FILE SELECTION
+   ========================================= */
 
 .predict-file-row {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-top: 8px;
+    gap: 12px;
+    margin-top: 12px;
     min-width: 0;
 }
 
 .predict-file-button {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    border: 1px solid #d9bfc7;
-    background: #ffffff;
-    color: var(--p-maroon);
+    border: 1px solid var(--line);
+    background: var(--soft);
+    color: var(--brand);
 
-    font-size: 13px;
-    font-weight: bold;
+    padding: 7px 16px;
+    border-radius: 999px;
 
-    padding: 5px 12px;
-    border-radius: 4px;
+    font-size: .82rem;
+    font-weight: 600;
     cursor: pointer;
     flex-shrink: 0;
+
+    transition: .2s;
 }
 
 .predict-file-button:hover {
-    background: var(--p-soft);
+    background: var(--brand);
+    color: white;
 }
 
 .predict-file-input {
@@ -231,146 +218,189 @@
 }
 
 .predict-file-row:focus-within .predict-file-button {
-    outline: 2px solid var(--p-maroon);
-    outline-offset: 2px;
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
 }
 
 .predict-file-name {
+    min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    color: var(--p-muted);
-    font: 12px/1.4 system-ui, sans-serif;
+    color: var(--muted);
+    font-size: .82rem;
 }
 
-/* ========================================
+/* =========================================
    ACTION BUTTONS
-   ======================================== */
+   ========================================= */
 
 .predict-actions {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    align-items: center;
     flex-wrap: wrap;
-    margin: 16px 0 8px;
+
+    gap: 12px;
+    margin: 24px 0 12px;
 }
 
 .predict-actions button {
-    font: bold 17px/1.3 Georgia, serif;
+    padding: 12px 28px;
+
+    font-family: "Inter", sans-serif;
+    font-size: .95rem;
+    font-weight: 600;
+
+    border-radius: 999px;
     cursor: pointer;
-    border-radius: 7px;
-    padding: 12px 25px;
+    transition: .2s;
 }
 
 .predict-run {
-    border: 1px solid var(--p-maroon);
-    background: var(--p-maroon);
+    background: linear-gradient(
+        90deg,
+        var(--brand-dark),
+        var(--accent)
+    );
+
+    border: 1px solid transparent;
     color: #ffffff;
-    min-width: 250px;
+    min-width: 245px;
 }
 
 .predict-run:hover {
-    background: var(--p-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
 }
 
 .predict-run span {
-    margin-right: 7px;
-    font-size: 13px;
+    margin-right: 6px;
+    font-size: .8rem;
 }
 
 .predict-reset {
-    border: 1px solid var(--p-line);
-    background: #ffffff;
-    color: var(--p-maroon);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--brand);
 }
 
 .predict-reset:hover {
-    background: var(--p-soft);
+    border-color: var(--accent);
+    background: var(--soft);
 }
 
 .predict-note {
-    margin: 0 0 20px;
-    font: 12px/1.5 system-ui, sans-serif;
-    color: var(--p-muted);
     text-align: center;
+    color: var(--muted);
+    font-size: .8rem;
+    margin: 12px 0 0;
 }
 
-/* ========================================
-   PREDICTION RESULTS
-   ======================================== */
+/* =========================================
+   RESULT SECTION
+   ========================================= */
 
 .predict-results {
-    border-top: 1px solid var(--p-line);
-    padding-top: 13px;
+    margin-top: 40px;
 }
 
 .predict-results h2 {
-    font-size: 25px;
-    color: var(--p-maroon);
-    margin: 0 0 8px;
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(1.7rem, 3vw, 2.1rem);
+    font-weight: 700;
+
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+
+    padding-left: 16px;
+    border-left: 6px solid var(--accent);
+
+    margin: 0 0 24px;
 }
 
 .predict-result-grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 12px;
-}
-
-.predict-score-card,
-.predict-caution {
-    border: 1px solid var(--p-line);
-    background: var(--p-soft);
-    border-radius: 7px;
-    padding: 15px 18px;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
 }
 
 .predict-score-card {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 16px;
-    font-weight: bold;
+
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+
+    padding: 24px;
+    text-align: center;
 }
 
 .predict-score-card span {
-    flex: 1;
+    color: var(--muted);
+    font-size: .9rem;
 }
 
 .predict-score-card output {
-    border-left: 1px solid #cbb8be;
-    min-width: 75px;
-    text-align: center;
-    padding-left: 15px;
-    font-size: 28px;
-    color: var(--p-maroon);
+    display: block;
+
+    color: var(--brand);
+    font-family: "Oswald", sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+
+    line-height: 1.3;
+    padding-top: 8px;
 }
 
 .predict-caution {
-    font-size: 14px;
-    font-style: italic;
+    display: flex;
+    align-items: center;
+
+    background: var(--soft);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+
+    padding: 20px;
+
+    color: var(--ink);
+    font-size: .9rem;
 }
 
 .predict-status {
     min-height: 1.5em;
-    margin: 13px 0;
-    font: 13px/1.5 system-ui, sans-serif;
-    color: var(--p-muted);
+    margin: 20px 0;
+    color: var(--muted);
+    font-size: .9rem;
 }
 
-/* ========================================
+/* =========================================
    INPUT CHECKS
-   ======================================== */
+   ========================================= */
 
 .predict-validation {
-    border: 1px solid var(--p-line);
-    border-radius: 7px;
-    padding: 12px 18px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+
+    padding: 22px;
 }
 
 .predict-validation h3 {
-    margin: 0 0 6px;
-    color: var(--p-maroon);
-    font-size: 19px;
+    font-family: "Oswald", sans-serif;
+    font-size: 1.4rem;
+    color: var(--brand);
+
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    margin: 0 0 16px;
 }
 
 .predict-validation dl {
@@ -381,119 +411,103 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 12px;
-    padding: 7px 0;
-    border-bottom: 1px solid #f0e9eb;
+
+    gap: 15px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
 }
 
 .predict-validation dl > div:last-child {
-    border: 0;
+    border-bottom: none;
+}
+
+.predict-validation dt {
+    font-size: .92rem;
+    font-weight: 500;
 }
 
 .predict-validation dd {
     margin: 0;
     text-align: right;
-    color: var(--p-muted);
-    font: 12px/1.4 system-ui, sans-serif;
+    color: var(--muted);
+    font-size: .85rem;
 }
 
 .predict-validation dd[data-state="present"] {
-    color: #18703d;
+    color: var(--green);
+    font-weight: 600;
 }
 
 .predict-validation dd[data-state="missing"] {
-    color: #a50f26;
+    color: var(--accent);
+    font-weight: 600;
 }
 
-/* ========================================
+/* =========================================
    FOOTER
-   ======================================== */
+   ========================================= */
 
 .predict-footer {
-    border-top: 1px solid var(--p-line);
-    background: #faf6f6;
-    color: var(--p-muted);
-    padding: 16px 0;
-    font-size: 13px;
+    background: var(--brand-dark);
+    color: #f2d4d9;
+    padding: 28px 0;
+    font-size: .9rem;
 }
 
 .predict-footer .predict-container {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    align-items: center;
     flex-wrap: wrap;
+    gap: 12px;
 }
 
 .predict-footer a {
-    color: var(--p-maroon);
-    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
 }
 
-/* ACCESSIBILITY */
+.predict-footer a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================
+   ACCESSIBILITY
+   ========================================= */
 
 .predict-page :focus-visible {
-    outline: 2px solid var(--p-maroon);
+    outline: 2px solid var(--accent);
     outline-offset: 3px;
 }
 
-/* ========================================
-   TABLET RESPONSIVENESS
-   ======================================== */
+/* =========================================
+   TABLET AND MOBILE
+   ========================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
 
-    .predict-menu {
-        display: block;
+    .predict-page .nav-links a {
+        padding-inline: 8px;
+        font-size: .85rem;
     }
 
-    .predict-links {
-        display: none;
-        position: absolute;
-        z-index: 20;
-        top: 100%;
-        left: 0;
-        right: 0;
-        padding: 10px 20px;
-        background: #ffffff;
-        border: 1px solid var(--p-line);
-        box-shadow: 0 6px 20px #0001;
-    }
-
-    .predict-links.open {
-        display: block;
-    }
-
-    .predict-links a {
-        padding: 8px 0;
-    }
 }
 
-/* ========================================
-   MOBILE RESPONSIVENESS
-   ======================================== */
+@media (max-width: 760px) {
 
-@media (max-width: 560px) {
-
-    .predict-nav {
-        min-height: 59px;
+    .predict-page .predict-banner {
+        padding: 32px 0;
     }
 
-    .predict-brand {
-        font-size: 27px;
-    }
-
-    .predict-banner {
-        padding-block: 19px;
-    }
-
-    .predict-banner p {
-        font-size: 15px;
+    .predict-workspace {
+        padding-block: 22px 40px;
     }
 
     .predict-row {
         grid-template-columns: 1fr;
-        gap: 6px;
-        padding: 12px;
+        gap: 10px;
+        padding: 14px;
     }
 
     .predict-row > label {
@@ -508,12 +522,21 @@
         grid-template-columns: 1fr;
     }
 
+    .predict-actions button {
+        flex: 1 1 auto;
+    }
+
     .predict-run {
         min-width: 0;
-        flex: 1 1 200px;
     }
 
     .predict-validation {
-        padding-inline: 12px;
+        padding: 16px;
     }
+
+    .predict-validation dt,
+    .predict-validation dd {
+        font-size: .8rem;
+    }
+
 }
