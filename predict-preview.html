@@ -4,35 +4,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHAGOS | Research Interface</title>
+
+    <title>PHAGOS | Predict</title>
+
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="predict-preview.css">
+
+    <script src="predict-preview.js" defer></script>
 </head>
-<body>
-    <main class="preview-container">
-        <a href="index.html">Back to PHAGOS</a>
 
-        <h1>PHAGOS Research Interface</h1>
-        <p>Computational research interface demonstration.</p>
+<body class="predict-page">
 
-        <section class="preview-panel">
-            <h2>System Status</h2>
-            <p>Demonstration mode</p>
-            <button id="test-button">Test Interface</button>
+    <!-- NAVIGATION BAR -->
+    <header class="predict-header">
+        <nav class="predict-nav predict-container" aria-label="Main navigation">
+
+            <a class="predict-brand" href="index.html#top">
+                PHAGOS
+            </a>
+
+            <button class="predict-menu" type="button"
+                aria-expanded="false"
+                aria-controls="predict-links"
+                aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul id="predict-links" class="predict-links">
+                <li><a href="index.html#top">Home</a></li>
+                <li><a href="index.html#overview">Overview</a></li>
+                <li><a href="index.html#background">Background</a></li>
+                <li><a href="index.html#methodology">Methodology</a></li>
+                <li><a href="index.html#results">Results</a></li>
+                <li><a href="index.html#candidates">Candidates</a></li>
+                <li>
+                    <a class="current" href="predict-preview.html"
+                        aria-current="page">Predict</a>
+                </li>
+                <li><a href="index.html#conclusion">Conclusion</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- TITLE BANNER -->
+        <section class="predict-banner">
+            <div class="predict-container">
+
+                <h1>PHAGOS Prediction Tool</h1>
+
+                <p>
+                    Research interface for the PHAGOS
+                    machine-learning models.
+                </p>
+
+                <span class="predict-mode">
+                    Interface preview · Model inference unavailable
+                </span>
+
+            </div>
         </section>
 
-        <section class="preview-panel">
-            <h2>Result Panel</h2>
-            <p id="result">Awaiting interface test.</p>
-        </section>
+        <!-- MAIN WORKSPACE -->
+        <div class="predict-container predict-workspace">
 
-        <p class="disclaimer">
-            Research demonstration only.
-            No biological predictions are performed.
-        </p>
+            <form id="preview-form" autocomplete="off" novalidate>
+
+                <!-- MODEL SELECTION -->
+                <div class="predict-row">
+
+                    <label for="model">Model</label>
+
+                    <select id="model" name="model">
+
+                        <option value="integrated">
+                            Integrated Random Forest — 185 features
+                        </option>
+
+                        <option value="nucleotide">
+                            Nucleotide/Codon RF — 149 features
+                        </option>
+
+                    </select>
+                </div>
+
+                <!-- CODING DNA INPUT -->
+                <div class="predict-row">
+
+                    <label for="cds">
+                        Coding DNA<br>
+                        sequence (FASTA)
+                    </label>
+
+                    <div class="predict-input">
+
+                        <textarea id="cds"
+                            rows="3"
+                            placeholder="Example field — use demonstration text only"
+                            spellcheck="false"
+                            aria-describedby="cds-file-name"></textarea>
+
+                        <div class="predict-file-row">
+
+                            <label class="predict-file-button" for="cds-file">
+                                Choose file
+                            </label>
+
+                            <input type="file"
+                                id="cds-file"
+                                accept=".fa,.fasta,.fna,.ffn,.txt"
+                                class="predict-file-input">
+
+                            <span id="cds-file-name" class="predict-file-name">
+                                No file selected
+                            </span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROTEIN INPUT -->
+                <div class="predict-row">
+
+                    <label for="protein">
+                        Protein<br>
+                        sequence (FASTA)
+                    </label>
+
+                    <div class="predict-input">
+
+                        <textarea id="protein"
+                            rows="3"
+                            placeholder="Example field — use demonstration text only"
+                            spellcheck="false"
+                            aria-describedby="protein-file-name"></textarea>
+
+                        <div class="predict-file-row">
+
+                            <label class="predict-file-button" for="protein-file">
+                                Choose file
+                            </label>
+
+                            <input type="file"
+                                id="protein-file"
+                                accept=".fa,.fasta,.faa,.txt"
+                                class="predict-file-input">
+
+                            <span id="protein-file-name" class="predict-file-name">
+                                No file selected
+                            </span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ACTION BUTTONS -->
+                <div class="predict-actions">
+
+                    <button type="submit" class="predict-run">
+                        <span aria-hidden="true">▶</span>
+                        Run prediction preview
+                    </button>
+
+                    <button type="reset" class="predict-reset">
+                        Clear
+                    </button>
+
+                </div>
+
+                <p class="predict-note">
+                    Preview only. File names are displayed locally;
+                    sequence contents are not read, analyzed or transmitted.
+                </p>
+
+            </form>
+
+            <!-- PREDICTION RESULTS -->
+            <section class="predict-results" aria-labelledby="result-heading">
+
+                <h2 id="result-heading">Prediction result</h2>
+
+                <div class="predict-result-grid">
+
+                    <div class="predict-score-card">
+
+                        <span>Model association score</span>
+
+                        <output id="score"
+                            aria-label="Model association score unavailable">
+                            —
+                        </output>
+
+                    </div>
+
+                    <aside class="predict-caution">
+                        Computational ranking signals are not proof
+                        of bacterial infection. No prediction has
+                        been calculated in this preview.
+                    </aside>
+
+                </div>
+
+                <p id="status" class="predict-status"
+                    role="status" aria-live="polite">
+                    Awaiting interface test.
+                </p>
+
+                <!-- INPUT CHECKS -->
+                <div class="predict-validation">
+
+                    <h3>Input checks</h3>
+
+                    <dl>
+
+                        <div>
+                            <dt>DNA field supplied</dt>
+                            <dd id="dna-check">Not checked</dd>
+                        </div>
+
+                        <div>
+                            <dt>Protein field supplied</dt>
+                            <dd id="protein-check">Not checked</dd>
+                        </div>
+
+                        <div>
+                            <dt>Biological sequence validation</dt>
+                            <dd>Unavailable</dd>
+                        </div>
+
+                        <div>
+                            <dt>Model execution</dt>
+                            <dd>Unavailable</dd>
+                        </div>
+
+                    </dl>
+
+                </div>
+
+            </section>
+
+        </div>
+
     </main>
 
-    <script src="predict-preview.js"></script>
+    <!-- FOOTER -->
+    <footer class="predict-footer">
+
+        <div class="predict-container">
+
+            <a href="index.html#top">← Back to PHAGOS</a>
+
+            <span>PHAGOS Research Team</span>
+
+        </div>
+
+    </footer>
+
 </body>
 </html>
-
